@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  expense_tracker:
+    build:
+      context: .
+    container_name: expense_tracker
+    ports:
+      - "9292:9292"
+    volumes:
+      - .:/app
