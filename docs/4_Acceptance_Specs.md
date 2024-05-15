@@ -277,7 +277,9 @@ Rack, the HTTP toolkit that Sinatra is built on top of, ships with a tool named 
 - config.ru
 ```ru
 require_relative 'app/api'
-run ExpenseTracker::API.new
+require_relative 'app/ledger'
+
+run ExpenseTracker::API.new(ExpenseTracker::Ledger.new)
 ```
 
 We're just loading our application and telling Rack to run it.

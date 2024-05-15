@@ -1,2 +1,4 @@
 require_relative 'app/api'
-run ExpenseTracker::API.new
+require_relative 'app/ledger'
+
+run ExpenseTracker::API.new(ExpenseTracker::Ledger.new)

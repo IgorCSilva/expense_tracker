@@ -81,7 +81,7 @@ module ExpenseTracker
         before do
           allow(ledger).to receive(:expenses_on)
             .with(date)
-            .and_return(ExpensesResult.new(true, [expense], nil))
+            .and_return([expense])
         end
 
         it 'returns the expense records as JSON' do
@@ -89,7 +89,7 @@ module ExpenseTracker
 
           check_response(
             last_response,
-            include('expenses' => [expense])
+            eq([expense])
           )
         end
         
@@ -106,7 +106,7 @@ module ExpenseTracker
         before do
           allow(ledger).to receive(:expenses_on)
             .with(date)
-            .and_return(ExpensesResult.new(true, [], nil))
+            .and_return([])
         end
 
         it 'returns an empty array as JSON' do
@@ -114,7 +114,7 @@ module ExpenseTracker
 
           check_response(
             last_response,
-            include('expenses' => [])
+            eq([])
           )
         end
 
